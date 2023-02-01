@@ -1,3 +1,5 @@
+require ("dotenv").config();
+
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const todoRouter = require('./routes/todosRoutes');
@@ -11,7 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://Samir:1QiJIJLUyr52lVdw@cluster0.klz9ll1.mongodb.net/TodoAAppDb")
+const mongoDbUser = process.env.mongoDbUser;
+const mongoDbPassword = process.env.mongoDbPassword;
+
+mongoose.connect(`mongodb+srv://${mongoDbUser}:${mongoDbPassword}@cluster0.klz9ll1.mongodb.net/TodoAAppDb`)
     .then(res => {
         console.log('Connect!');
     })
