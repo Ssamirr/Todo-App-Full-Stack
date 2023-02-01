@@ -41,7 +41,7 @@ const todoController = {
     },
     delete: (req, res) => {
         let id = req.params.id;
-        todo.findByIdAndDelete(id, (err, doc) => {
+        todo.findByIdAndUpdate(id, {isDeleted:true}, { new: true }, (err, doc) => {
             if (!err) {
                 res.json(doc)
             } else {
