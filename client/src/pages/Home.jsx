@@ -81,7 +81,7 @@ function Home() {
                             setForModal("Add")
                             setValues({ text: "" })
                         }}>
-                            Add Product
+                            Add Todo
                         </button>
                     </div>
 
