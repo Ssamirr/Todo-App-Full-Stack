@@ -62,7 +62,7 @@ function Home() {
 
     }
 
-    const completeItem = (id,value) => {
+    const completeItem = (id, value) => {
         network.updateItem(BASE_URL, id, { isCompleted: value })
             .then(() => refetch())
     }
@@ -73,19 +73,19 @@ function Home() {
             {isLoading ?
                 <Loading />
                 :
+                <>
+                    <div className='header-page'>
+                        <h1 className='all-data-list'>ToDos</h1>
+                        <button className='add-item' onClick={() => {
+                            handleOpen()
+                            setForModal("Add")
+                            setValues({ text: "" })
+                        }}>
+                            Add Product
+                        </button>
+                    </div>
 
-                data ? (
-                    <>
-                        <div className='header-page'>
-                            <h1 className='all-data-list'>ToDos</h1>
-                            <button className='add-item' onClick={() => {
-                                handleOpen()
-                                setForModal("Add")
-                                setValues({ text: "" })
-                            }}>
-                                Add Product
-                            </button>
-                        </div>
+                    {data?.length ? (
 
                         <table className="w3-table-all w3-centered">
                             <tbody>
@@ -124,9 +124,10 @@ function Home() {
 
                             </tbody>
                         </table>
-                    </>
-                ) :
-                    <h1 className='not-list'>Todo list is empty</h1>
+
+                    ) :
+                        <h1 className='not-list'>Todo list is empty</h1>}
+                </>
             }
 
             <Modal

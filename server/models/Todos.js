@@ -7,7 +7,7 @@ const todoSchema = Schema({
     isDeleted: Boolean,
     date: {
         type: Date,
-        default: Date.now()
+        default: Date()
     }
 })
 
